@@ -11,6 +11,7 @@ let currentMusicIndex = 0;
 let isPlaying = false;
 let playbackInterval = null;
 let bgm = null;
+let isMusicPlaying = false;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -31,7 +32,15 @@ function setupBackgroundMusic() {
     if (!bgm) return;
     // Set reasonable default volume
     try { bgm.volume = 0.8; } catch (e) {}
-    // Do not autoplay here; we'll attempt to play after loading completes
+    // Add event listener for first user interaction to play music if not already playing
+    const playOnInteraction = () => {
+        if (!isMusicPlaying) {
+            attemptPlayBGM();
+        }
+    };
+    document.addEventListener('click', playOnInteraction, { once: true });
+    document.addEventListener('touchstart', playOnInteraction, { once: true });
+    document.addEventListener('keydown', playOnInteraction, { once: true });
 }
 
 // Note: autoplay resume hint removed to avoid clickable UI per user request
@@ -81,6 +90,9 @@ function simulateLoading() {
             
             // Add completion animation
             loadingScreen.classList.add('loading-complete');
+            
+            // Attempt to play background music immediately after loading
+            attemptPlayBGM();
             
             // Wait for completion animation, then transition
             setTimeout(() => {
@@ -1260,12 +1272,17 @@ function attemptPlayBGM() {
         if (p && typeof p.then === 'function') {
             p.then(() => {
                 console.log('BGM playing');
+                isMusicPlaying = true;
             }).catch(err => {
                 console.log('Autoplay blocked or failed:', err);
+                isMusicPlaying = false;
             });
+        } else {
+            isMusicPlaying = true;
         }
     } catch (e) {
         console.log('attemptPlayBGM error', e);
+        isMusicPlaying = false;
     }
 }
 
