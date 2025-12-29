@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Courier New', monospace;
-    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+    background: linear-gradient(45deg, #FFCDC9, #f09de2, #FDACAC);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -59,15 +59,15 @@ body {
 
 /* Loading Screen Styles */
 #loading-screen {
-    background: #000;
+    background: #FDB5CE;
     color: #ff1493;
 }
 
 #loading-screen .gameboy-screen {
     width: 600px;
     height: 400px;
-    background: #000;
-    border: 4px solid #ff1493;
+    background: #132440;
+    border: 4px solid #16476A;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -113,7 +113,7 @@ body {
 .progress-bar {
     width: 80%;
     height: 30px;
-    background: #333;
+    background: #ffffff;
     border: 2px solid #ff1493;
     margin: 0 auto 30px;
     position: relative;
@@ -212,7 +212,7 @@ body {
     border-radius: 20px 20px 40px 40px;
     padding: 20px;
     box-shadow: 
-        0 20px 40px rgba(0,0,0,0.3),
+        0 20px 40px rgba(255, 12, 12, 0.3),
         inset 0 2px 4px rgba(255,255,255,0.8),
         inset 0 -2px 4px rgba(0,0,0,0.2);
     position: relative;
