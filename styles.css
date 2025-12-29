@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Courier New', monospace;
-    background: linear-gradient(45deg, #FFCDC9, #f09de2, #FDACAC);
+    background: linear-gradient(45deg, #fab9b4, #f09de2, #f89f9f);
     min-height: 100vh;
     display: flex;
     justify-content: center;
